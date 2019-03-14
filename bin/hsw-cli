@@ -45,13 +45,13 @@ class CLI {
 
     const id = this.config.str('id', 'primary');
     const token = this.config.str('token', '');
-
     this.client = new WalletClient({
       url: this.config.str('url'),
       apiKey: this.config.str('api-key'),
       ssl: this.config.bool('ssl'),
       host: this.config.str('http-host'),
-      port: this.config.uint('http-port')
+      port: this.config.uint('http-wallet-port') 
+	|| this.config.uint('http-port')
         || ports[this.network]
         || ports.main,
       token
